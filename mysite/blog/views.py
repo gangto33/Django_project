@@ -1,12 +1,11 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Category, Tag, Comment
 from .forms import CommentForm
 from django.utils.text import slugify
 from django.db.models import Q
-
 
 class PostList(ListView):
     model = Post
@@ -106,10 +105,13 @@ class PostCreate(LoginRequiredMixin, CreateView):
             return redirect('/blog/')
 
 
-class PostUpdate(LoginRequiredMixin, UpdateView):
+class PostUpdate(UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content', 'head_image',
               'file_upload', 'category', 'tags']
+    
+    def test_func(self): # UserPassesTestMixin에 있고 test_func() 메서드를 오버라이딩, True, False 값으로 접근 제한
+        return self.get_object().author == self.request.user
 
     def form_valid(self, form):
         current_user = self.request.user
@@ -188,6 +190,8 @@ def delete(request, pk):
 
     elif request.method == 'GET':
         return HttpResponse('잘못된 접근 입니다.')
+    
+
 
 postlist = PostList.as_view()
 postdetail = PostDetail.as_view()
