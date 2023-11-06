@@ -1,33 +1,26 @@
-{% load django_bootstrap5 %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
-    <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body>
-    <h1>detail</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </nav>
-    <main id="main">
-    <p>{{ post.title }}</p>
-    <p>{{ post.content }}</p>
-    {% if post.head_image %}
-    <img src="{{ post.head_image.url }}" alt="" srcset="">
-    {% endif %}
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+    <header class="d-flex align-items-center pb-3 mb-1 border-bottom">
+        <span class="fs-4">{{ post.title }}</span>
+    </header>
+  
+    <main>
+        <div>
+            <span>{{ post.created_at }}</span><span> by {{ post.author }}</span>
+        </div>
+        <p></p>
+      {% if post.head_image %}
+        <img class="pt-3" src="{{ post.head_image.url }}" alt="" srcset="">
+        {% endif %}
+        <p></p>
+      <p class="fs-5 pt-3 col-md-12">{{ post.content }}</p>
+
+      
     {% if post.file_upload %}
-    <a href="{{ post.head_image.url }}" alt="" srcset="">
-    Download:
+    <a href="{{ post.file_upload.url }}" alt="" srcset="">
+    첨부파일:
         {% if post.get_file_ext == 'csv' %}
             <i class="fas fa-file-csv"></i>
         {% elif post.get_file_ext == 'pdf' %}
@@ -53,45 +46,68 @@
         {% endif %}
         {{ post.file_upload.name }}
     {% endif %}
-    <p>{{ post.created_at }}</p>
-    <p>by {{ post.author }}</p>
-    {% if post.comment_set.exists %}
-        <h2>댓글</h2>
-        {% for comment in post.comment_set.all %}
-            <p>{{ comment.content }}</p>
-            <p>{{ comment.created_at }}</p>
-            <p>by {{ comment.author }}</p>
-            {% if user.is_authenticated and comment.author == user %}
-            <a role="button" href="/blog/update_comment/{{comment.pk}}">edit</a>
-            <a role="button" href="/blog/delete_comment/{{comment.pk}}">delete</a>
+    </a>
+    <p></p>
+
+      <div class="row g-5">
+        <div class="col-md-12 pt-3 border-top">
+            <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+            {% if post.comment_set.exists %}
+            {% for comment in post.comment_set.all %}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <p>{{ comment.created_at }}</p>
+                    <p>{{ comment.author }}: {{ comment.content }}</p>
+                    {% if user.is_authenticated and comment.author == user %}
+                    <a role="button" href="/blog/update_comment/{{comment.pk}}">edit</a>
+                    <a role="button" href="/blog/delete_comment/{{comment.pk}}">delete</a>
+                    {% endif %}
+                </li>
+            </ul>
+            {% endfor %}
+            {% else %}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <p>아직 댓글이 없습니다.</p>
+                </li>
+            </ul>
             {% endif %}
-        {% endfor %}
-    {% else %}
-        <p>아직 댓글이 없습니다.</p>
-    {% endif %}
+            </div>
+            </div>
+        </div>
+    </div>
+</main>
+
     {% if user.is_authenticated %}
-    <p>로그인 되었습니다.</p>
 
     <form id="comment-form" action="{{post.get_absolute_url}}new_comment/" method="post">
         {% csrf_token %}
-        {{comment_form.as_p}}
-        <button type="submit">작성</button>
+        <div class="input-group pt-3">
+            <span class="input-group-text">댓글 작성</span>
+            <textarea name="content" class="form-control" aria-label="With textarea" required></textarea>
+            <button type="submit" class="btn btn-outline-primary">작성</button>
+        </div>
     </form>
 
+
     {% if user == post.author %}
-    <a href="{% url 'postedit' post.pk %}">수정</a>
+    <div class="d-flex justify-content-between pt-5">
+    <a href="{% url 'postedit' post.pk %}"><button type="submit" class="btn btn-primary">Edit Post</button></a>
 
     <form action="{% url 'postdelete' pk=post.pk %}" method="POST">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Delete Post</button>
     </form>
 
+    </div>
     {% endif %}
 
     {% else %}
     <p>로그인이 필요합니다.</p>
     {% endif %}
     </main>
+
+{% endblock %}
 
 </body>
 </html>

@@ -1,21 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Toast Editor 2.0.0과 의존성 -->
-    <link
-        rel="stylesheet"
-        href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"
-    />
-    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-</head>
+{% extends 'base.html' %}
+{% block content %}
+
+<!--
+    < p > < l a b e l f o r = " i d _ t i t l e " > T i t l e : < / l a b e l > < i n p u t t y p e = " t e x t " n a m e = " t i t l e " m a x l e n g t h = " 1 0 0 " r e q u i r e d i d = " i d _ t i t l e " > < / p > < p > < l a b e l f o r = " i d _ c o n t e n t " > C o n t e n t : < / l a b e l > < t e x t a r e a n a m e = " c o n t e n t " c o l s = " 4 0 " r o w s = " 1 0 " r e q u i r e d i d = " i d _ c o n t e n t " > < / t e x t a r e a > < / p > < p > < l a b e l f o r = " i d _ h e a d _ i m a g e " > H e a d i m a g e : < / l a b e l > < i n p u t t y p e = " f i l e " n a m e = " h e a d _ i m a g e " a c c e p t = " i m a g e / * " i d = " i d _ h e a d _ i m a g e " > < / p > < p > < l a b e l f o r = " i d _ f i l e _ u p l o a d " > F i l e u p l o a d : < / l a b e l > < i n p u t t y p e = " f i l e " n a m e = " f i l e _ u p l o a d " i d = " i d _ f i l e _ u p l o a d " >
+-->
+
 <body>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <table class="table">
-            {{form}}
+            {{ form }}
+
+            <!--
+            <div class="mb-3">
+                <select name="category" class="form-select form-select-lg" aria-label=".form-select-lg example">
+                    {% for category in form.category %}
+                    <option value="{{ forloop.counter0 }}">{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            {% for p in form.fields %}
+            {{ p }}
+            {% endfor %}
+            -->
+
+            <!--
             <tr>
                 <th><label for="id_tags">Tags:</label></th>
                 <td><input type="text" name="tags_str" id="id_tags_str"></td>
@@ -24,9 +34,15 @@
                 <th><label for="id_content_editor">Content_editor:</label></th>
                 <td><div id="editor"></div></td>
             </tr>
+            -->
         </table>
-        <button type="submit" id="submitbtn">글 등록</button>
+        <div class="d-flex flex-row-reverse">
+            <button type="submit" id="submitbtn" class="btn btn-primary me-5">Post</button>
+        </div>
     </form>
+
+{% endblock %}
+
     <script>
         const Editor = toastui.Editor;
 
