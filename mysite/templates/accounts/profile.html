@@ -63,10 +63,10 @@
                             <p class="mb-0">"탈퇴하기"를 누르면 회원 탈퇴되며, 복구되지 않습니다.</p>
                         </div>
                         <div class="modal-footer flex-nowrap p-0">
-                            <form action="{% url "delete" %}" method="POST">
-                            {% csrf_token %}
-                                <button type="button" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0 border-end"><strong>탈퇴하기</strong></button>
-                            </form>
+                                <form action="{% url "delete" %}" method="POST">
+                                {% csrf_token %}
+                                    <button type="submit" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0 border-end"><strong>탈퇴하기</strong></button>
+                                </form>
                             <a href="/accounts/profile"><button type="button" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">취소하기</button></a>
                         </div>
                     </div>
