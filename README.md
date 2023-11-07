@@ -126,3 +126,35 @@ ___
   <img src="./mysite/리드미 자료/AccountsURL.png" width="60%">
   <img src="./mysite/리드미 자료/BlogURL.png" width="60%">
 </div>
+
+# 6. 구현
+## 6-1. 인증 및 사용자(Accounts)
+#### 회원가입 및 로그인
+<div align="center">
+  <img src="./mysite/리드미 자료/회원가입, 로그인.gif" width="80%">
+</div>
+<p></p>
+<div align="center">
+  <img src="./mysite/리드미 자료/비회원 상단 바.png" width="100%">
+</div>
+<div align="center">
+  <img src="./mysite/리드미 자료/회원 상단 바.png" width="100%">
+</div>
+<p></p>
+
+- 로그인 전과 후의 상단 바 변화입니다.
+- 미인증 회원이 프로필과 글 작성에 비정상 접근 시 로그인 페이지로 이동합니다.
+#### 프로필 페이지와 회원 정보 수정
+<div align="center">
+  <img src="./mysite/리드미 자료/프로필, 회원정보 수정.gif" width="80%">
+</div>
+
+#### 비밀번호 변경
+<div align="center">
+  <img src="./mysite/리드미 자료/비밀번호 변경.gif" width="80%">
+</div>
+
+#### 회원탈퇴
+<div align="center">
+  <img src="./mysite/리드미 자료/회원탈퇴.gif" width="80%">
+</div>
