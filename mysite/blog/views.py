@@ -1,11 +1,12 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Category, Tag, Comment
 from .forms import CommentForm
 from django.utils.text import slugify
 from django.db.models import Q
+from django.contrib import messages
 
 class PostList(ListView):
     model = Post
@@ -46,6 +47,12 @@ class PostDetail(DetailView):
         context['comment_form'] = CommentForm
         return context
 
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get('pk')
+        post = Post.objects.get(pk=pk)
+        post.view_count += 1
+        post.save()
+        return super().get_object(queryset)
 
 def category_page(request, slug):
     category = Category.objects.get(slug=slug)
@@ -108,7 +115,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
 class PostUpdate(UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content', 'head_image',
-              'file_upload', 'category', 'tags']
+              'file_upload', 'category']
     
     def test_func(self): # UserPassesTestMixin에 있고 test_func() 메서드를 오버라이딩, True, False 값으로 접근 제한
         return self.get_object().author == self.request.user
@@ -186,7 +193,9 @@ def delete(request, pk):
     if request.method == 'POST':
         post = Post.objects.get(pk=pk)
         post.delete()
-        return render(request, 'blog/post_delete.html')
+        messages.info(request, "게시글이 삭제되었습니다!")
+        return redirect('/blog/')
+        #return render(request, 'blog/post_delete.html')
 
     elif request.method == 'GET':
         return HttpResponse('잘못된 접근 입니다.')
@@ -198,3 +207,6 @@ postdetail = PostDetail.as_view()
 write = PostCreate.as_view()
 edit = PostUpdate.as_view()
 update_comment = CommentUpdate.as_view()
+
+def server_error(request) :
+    return render(request, "500.html", status=500)
