@@ -11,5 +11,5 @@ urlpatterns = [
     path('update_comment/<int:pk>/', views.update_comment, name='update_comment'),
     path('delete_comment/<int:pk>/', views.delete_comment, name='delete_comment'),
     path('category/<str:slug>/', views.category_page, name='category_page'),
-    path('tag/<str:slug>/', views.tag_page, name='tag_page'),
+    # path('tag/<str:slug>/', views.tag_page, name='tag_page'),
 ]
