@@ -3,12 +3,15 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
+
 
 handler500 = 'django.views.defaults.server_error'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
+    path('', RedirectView.as_view(url='/blog/'), name='root'),
+    # path('', include('main.urls')),
     path('accounts/', include('accounts.urls')),
     path('blog/', include('blog.urls')),
 ]
