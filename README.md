@@ -12,13 +12,15 @@
 - 게임 분류 별 카테고리와 검색 기능을 사용하여 정보를 보다 쉽게 얻을 수 있습니다.
 
 
-# 2. 개발 환경
-## 사용언어
+# 2. 개발 기술 및 환경
+## 2-1 개발 기술
+#### [기술 - BE]
 <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">  
 <br>
+#### [기술 - FE]
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 
-## 에디터
+## 2-2 개발 환경
 <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
 
 # 3. DB
