@@ -11,6 +11,7 @@ class Post(models.Model):
         upload_to='blog/files/%Y/%m/%d/', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+    view_count = models.PositiveIntegerField(default=0)
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -78,5 +79,5 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return f'/blog/{self.post.pk}/#comment-{self.pk}'
 
-    class Meta:
-        ordering = ['-id']
+    # class Meta:
+        # ordering = ['-id']
