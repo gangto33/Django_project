@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +10,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>edit comment</h1>
-    <form method="post">
+    <div class="py-5 text-center">
+        <h2>Edit Comment</h2>
+    </div>
+
+    <form method="post" class="ms-5 me-5">
         {% csrf_token %}
         <table class="table">
-            {{form}}
+            {% bootstrap_form form %}
         </table>
-        <button type="submit">작성</button>
+        <div class="d-flex flex-row-reverse">
+            <button type="submit" id="submitbtn" class="btn btn-primary me-5">Edit</button>
+        </div>
     </form>
+
+{% endblock %}
 </body>
 </html>
