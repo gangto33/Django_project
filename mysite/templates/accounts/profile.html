@@ -41,7 +41,7 @@
             <a href="{% url "update" %}"><button class="btn btn-primary w-100 py-2" type="submit">Update User</button></a>
 
             <p></p>
-
+            <a href="{% url "re_password" %}"><button class="btn btn-outline-secondary w-100 py-2" type="submit">Change Password</button></a>
             <!--
             {% if request.user == user %}
             <form action="{% url "delete" %}" method="POST">
@@ -50,7 +50,8 @@
             </form>
             {% endif %}
             -->
-
+            <p></p>
+            
             {% if request.user == user %}
             <button class="btn btn-danger w-100 py-2" data-bs-toggle="modal" data-bs-target="#delete_modal">Unregister (Delete User)</button>
             {% endif %}
