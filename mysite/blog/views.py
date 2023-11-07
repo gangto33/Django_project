@@ -30,7 +30,7 @@ class PostList(ListView):
             # Q는 |(or), &(and), ~(not) 연산자를 사용할 수 있습니다.
             # icontains는 대소문자를 구분하지 않는 검색입니다.
             queryset = queryset.filter(
-                Q(title__icontains=search_keyword) | Q(content__icontains=search_keyword) | Q(tags__name__icontains=search_keyword)).distinct()
+                Q(title__icontains=search_keyword) | Q(content__icontains=search_keyword) | Q(category__name__icontains=search_keyword)).distinct()
 
         return queryset
 
