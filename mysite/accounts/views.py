@@ -70,16 +70,19 @@ def update(request):
 
 
 @login_required
-def change_password(request, user_pk):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            return redirect('/blog/')
-    else:
+def change_password(request):
+    # <GET>
+    if request.method != "POST":
         form = PasswordChangeForm(request.user)
-    context = {
-        'form': form,
-    }
-    return render(request, 'accounts/change_password.html', context)
+        return render(request, 'accounts/change_password.html', {'form':form})
+
+    # <POST>
+    form = PasswordChangeForm(request.user, request.POST)
+    if form.is_valid():
+        user = form.save()
+        update_session_auth_hash(request, user)
+        messages.success(request, '비밀번호가 정상적으로 변경되었습니다.')
+        return redirect('/accounts/profile')
+    else:
+        messages.error(request, '입력하신 정보가 유효하지 않습니다.')
+    return redirect("/accounts/change_password")
