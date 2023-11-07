@@ -10,6 +10,9 @@
         <div>
             <span>{{ post.created_at }}</span><span> by {{ post.author }}</span>
         </div>
+        <div>
+            <p>조회수 : {{post.view_count}}</p>
+        </div>
         <p></p>
       {% if post.head_image %}
         <img class="pt-3" src="{{ post.head_image.url }}" alt="" srcset="">
@@ -59,8 +62,26 @@
                     <p>{{ comment.created_at }}</p>
                     <p>{{ comment.author }}: {{ comment.content }}</p>
                     {% if user.is_authenticated and comment.author == user %}
-                    <a role="button" href="/blog/update_comment/{{comment.pk}}">edit</a>
-                    <a role="button" href="/blog/delete_comment/{{comment.pk}}">delete</a>
+                    <a href="/blog/update_comment/{{comment.pk}}"><button type="submit" class="btn btn-outline-primary btn-sm">edit</button></a>
+
+                    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_comment">delete</button>
+
+                    <div id="delete_comment" class="modal fade" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content rounded-3 shadow">
+                                <div class="modal-body p-4 text-center">
+                                    <h5 class="mb-0">댓글을 삭제하시겠습니까?</h5>
+                                </div>
+                                <div class="modal-footer flex-nowrap p-0">
+                                        <a href="/blog/delete_comment/{{comment.pk}}">
+                                            <button type="submit" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0 border-end"><strong>네</strong></button>
+                                        </a>
+                                    <a href=""><button type="button" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">아니요</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {% endif %}
                 </li>
             </ul>
@@ -94,8 +115,6 @@
     <div class="d-flex justify-content-between pt-5">
     <a href="{% url 'postedit' post.pk %}"><button type="submit" class="btn btn-primary">Edit Post</button></a>
     
-
-    
     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal">Delete Post</button>
             
 
@@ -111,7 +130,7 @@
                                 {% csrf_token %}
                                     <button type="submit" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0 border-end"><strong>삭제하기</strong></button>
                                 </form>
-                            <a href="/accounts/profile"><button type="button" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">취소하기</button></a>
+                            <a href="#"><button type="button" class="btn btn-lg btn-link text-decoration-none row-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">취소하기</button></a>
                         </div>
                     </div>
                 </div>
