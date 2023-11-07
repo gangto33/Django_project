@@ -6,6 +6,9 @@
 ## 개발 기간
 2023.10.26 ~ 2023.11.07
 
+## WBS
+<img src="./mysite/리드미 자료/WBS.png" width="100%" height="50%">
+
 ## 설명
 - 글 작성, 삭제, 수정, 조회, 댓글 등 블로그 형식을 기반으로 제작된 커뮤니티 서비스
 - 회원가입 한 사용자는 게시물과 댓글 작성 가능
@@ -23,12 +26,12 @@
 ## 2-2 개발 환경
 <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
 
-# 3. DB
+# 3. 기능 마인드 맵
+<img src="./mysite/리드미 자료/기획 마인드맵.png" width="100%">
 
 
-
-# 4. WBS
-
+# 4. 데이터베이스 모델링(dbdiagram.io)
+<img src="./mysite/리드미 자료/DB.png" width="100%">
 
 
 
