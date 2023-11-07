@@ -4,197 +4,108 @@
 
 ___
 ```
-C:.
-├─accounts
-│  ├─migrations
-│  │  └─__pycache__
-│  └─__pycache__
-├─blog
-│  ├─migrations
-│  │  └─__pycache__
-│  └─__pycache__
-├─main
-│  ├─migrations
-│  │  └─__pycache__
-│  └─__pycache__
-├─media
-│  └─blog
-│      ├─files
-│      │  └─2023
-│      │      └─11
-│      │          └─06
-│      └─images
-│          └─2023
-│              └─11
-│                  ├─01
-│                  ├─05
-│                  ├─06
-│                  └─07
-├─projectblog
-│  └─__pycache__
-├─static
-│  ├─bootstrap
-│  │  ├─.github
-│  │  │  ├─codeql
-│  │  │  ├─ISSUE_TEMPLATE
-│  │  │  └─workflows
-│  │  ├─build
-│  │  ├─dist
-│  │  │  ├─css
-│  │  │  └─js
-│  │  ├─js
-│  │  │  ├─dist
-│  │  │  │  ├─dom
-│  │  │  │  └─util
-│  │  │  ├─src
-│  │  │  │  ├─dom
-│  │  │  │  └─util
-│  │  │  └─tests
-│  │  │      ├─helpers
-│  │  │      ├─integration
-│  │  │      ├─unit
-│  │  │      │  ├─dom
-│  │  │      │  └─util
-│  │  │      └─visual
-│  │  ├─nuget
-│  │  ├─scss
-│  │  │  ├─forms
-│  │  │  ├─helpers
-│  │  │  ├─mixins
-│  │  │  ├─tests
-│  │  │  │  ├─mixins
-│  │  │  │  ├─sass-true
-│  │  │  │  └─utilities
-│  │  │  ├─utilities
-│  │  │  └─vendor
-│  │  └─site
-│  │      ├─assets
-│  │      │  ├─js
-│  │      │  │  └─vendor
-│  │      │  └─scss
-│  │      ├─content
-│  │      │  └─docs
-│  │      │      └─5.3
-│  │      │          ├─about
-│  │      │          ├─components
-│  │      │          ├─content
-│  │      │          ├─customize
-│  │      │          ├─examples
-│  │      │          │  ├─album
-│  │      │          │  ├─album-rtl
-│  │      │          │  ├─badges
-│  │      │          │  ├─blog
-│  │      │          │  ├─blog-rtl
-│  │      │          │  ├─breadcrumbs
-│  │      │          │  ├─buttons
-│  │      │          │  ├─carousel
-│  │      │          │  ├─carousel-rtl
-│  │      │          │  ├─cheatsheet
-│  │      │          │  ├─cheatsheet-rtl
-│  │      │          │  ├─checkout
-│  │      │          │  ├─checkout-rtl
-│  │      │          │  ├─cover
-│  │      │          │  ├─dashboard
-│  │      │          │  ├─dashboard-rtl
-│  │      │          │  ├─dropdowns
-│  │      │          │  ├─features
-│  │      │          │  ├─footers
-│  │      │          │  ├─grid
-│  │      │          │  ├─headers
-│  │      │          │  ├─heroes
-│  │      │          │  ├─jumbotron
-│  │      │          │  ├─jumbotrons
-│  │      │          │  ├─list-groups
-│  │      │          │  ├─masonry
-│  │      │          │  ├─modals
-│  │      │          │  ├─navbar-bottom
-│  │      │          │  ├─navbar-fixed
-│  │      │          │  ├─navbar-static
-│  │      │          │  ├─navbars
-│  │      │          │  ├─navbars-offcanvas
-│  │      │          │  ├─offcanvas-navbar
-│  │      │          │  ├─pricing
-│  │      │          │  ├─product
-│  │      │          │  ├─sidebars
-│  │      │          │  ├─sign-in
-│  │      │          │  ├─starter-template
-│  │      │          │  ├─sticky-footer
-│  │      │          │  └─sticky-footer-navbar
-│  │      │          ├─extend
-│  │      │          ├─forms
-│  │      │          ├─getting-started
-│  │      │          ├─helpers
-│  │      │          ├─layout
-│  │      │          └─utilities
-│  │      ├─data
-│  │      ├─layouts
-│  │      │  ├─partials
-│  │      │  │  ├─callouts
-│  │      │  │  ├─home
-│  │      │  │  └─icons
-│  │      │  ├─shortcodes
-│  │      │  └─_default
-│  │      │      └─_markup
-│  │      └─static
-│  │          └─docs
-│  │              └─5.3
-│  │                  └─assets
-│  │                      ├─brand
-│  │                      ├─img
-│  │                      │  ├─examples
-│  │                      │  ├─favicons
-│  │                      │  └─guides
-│  │                      └─js
-│  └─bootstrap-5.3.2-examples
-│      ├─album
-│      ├─album-rtl
-│      ├─assets
-│      │  ├─brand
-│      │  ├─dist
-│      │  │  ├─css
-│      │  │  └─js
-│      │  └─js
-│      ├─badges
-│      ├─blog
-│      ├─blog-rtl
-│      ├─breadcrumbs
-│      ├─buttons
-│      ├─carousel
-│      ├─carousel-rtl
-│      ├─cheatsheet
-│      ├─cheatsheet-rtl
-│      ├─checkout
-│      ├─checkout-rtl
-│      ├─cover
-│      ├─dashboard
-│      ├─dashboard-rtl
-│      ├─dropdowns
-│      ├─features
-│      ├─footers
-│      ├─grid
-│      ├─headers
-│      ├─heroes
-│      ├─jumbotron
-│      ├─jumbotrons
-│      ├─list-groups
-│      ├─masonry
-│      ├─modals
-│      ├─navbar-bottom
-│      ├─navbar-fixed
-│      ├─navbar-static
-│      ├─navbars
-│      ├─navbars-offcanvas
-│      ├─offcanvas
-│      ├─offcanvas-navbar
-│      ├─pricing
-│      ├─product
-│      ├─sidebars
-│      ├─sign-in
-│      ├─starter-template
-│      ├─sticky-footer
-│      └─sticky-footer-navbar
-└─templates
-    ├─accounts
-    ├─blog
-    └─main
+📦 
+├─ README.md
+└─ mysite
+   ├─ accounts
+   │  ├─ __init__.py
+   │  ├─ __pycache__
+   │  │  ├─ __init__.cpython-312.pyc
+   │  │  ├─ admin.cpython-312.pyc
+   │  │  ├─ apps.cpython-312.pyc
+   │  │  ├─ forms.cpython-312.pyc
+   │  │  ├─ models.cpython-312.pyc
+   │  │  ├─ urls.cpython-312.pyc
+   │  │  └─ views.cpython-312.pyc
+   │  ├─ admin.py
+   │  ├─ apps.py
+   │  ├─ forms.py
+   │  ├─ migrations
+   │  │  ├─ 0001_initial.py
+   │  │  ├─ __init__.py
+   │  │  └─ __pycache__
+   │  │     ├─ 0001_initial.cpython-312.pyc
+   │  │     └─ __init__.cpython-312.pyc
+   │  ├─ models.py
+   │  ├─ tests.py
+   │  ├─ urls.py
+   │  └─ views.py
+   ├─ blog
+   │  ├─ __init__.py
+   │  ├─ __pycache__
+   │  │  ├─ __init__.cpython-312.pyc
+   │  │  ├─ admin.cpython-312.pyc
+   │  │  ├─ apps.cpython-312.pyc
+   │  │  ├─ forms.cpython-312.pyc
+   │  │  ├─ models.cpython-312.pyc
+   │  │  ├─ urls.cpython-312.pyc
+   │  │  └─ views.cpython-312.pyc
+   │  ├─ admin.py
+   │  ├─ apps.py
+   │  ├─ forms.py
+   │  ├─ migrations
+   │  │  ├─ 0001_initial.py
+   │  │  ├─ __init__.py
+   │  │  └─ __pycache__
+   │  │     ├─ 0001_initial.cpython-312.pyc
+   │  │     └─ __init__.cpython-312.pyc
+   │  ├─ models.py
+   │  ├─ tests.py
+   │  ├─ urls.py
+   │  └─ views.py
+   ├─ db.sqlite3
+   ├─ main
+   │  ├─ __init__.py
+   │  ├─ __pycache__
+   │  │  ├─ __init__.cpython-312.pyc
+   │  │  ├─ admin.cpython-312.pyc
+   │  │  ├─ apps.cpython-312.pyc
+   │  │  ├─ models.cpython-312.pyc
+   │  │  ├─ urls.cpython-312.pyc
+   │  │  └─ views.cpython-312.pyc
+   │  ├─ admin.py
+   │  ├─ apps.py
+   │  ├─ migrations
+   │  │  ├─ __init__.py
+   │  │  └─ __pycache__
+   │  │     └─ __init__.cpython-312.pyc
+   │  ├─ models.py
+   │  ├─ tests.py
+   │  ├─ urls.py
+   │  └─ views.py
+   ├─ manage.py
+   ├─ media
+   │  └─ blog
+   │     ├─ files
+   │     └─ images
+   ├─ projectblog
+   │  ├─ __init__.py
+   │  ├─ __pycache__
+   │  │  ├─ __init__.cpython-312.pyc
+   │  │  ├─ settings.cpython-312.pyc
+   │  │  ├─ urls.cpython-312.pyc
+   │  │  └─ wsgi.cpython-312.pyc
+   │  ├─ asgi.py
+   │  ├─ settings.py
+   │  ├─ urls.py
+   │  └─ wsgi.py
+   └─ templates
+      ├─ 404.html
+      ├─ 500.html
+      ├─ accounts
+      │  ├─ change_password.html
+      │  ├─ login.html
+      │  ├─ profile.html
+      │  ├─ signup.html
+      │  └─ update.html
+      ├─ base.html
+      ├─ blog
+      │  ├─ comment_form.html
+      │  ├─ post_detail.html
+      │  ├─ post_form.html
+      │  └─ post_list.html
+      └─ main
+         ├─ about.html
+         ├─ contact.html
+         └─ index.html
 ```
