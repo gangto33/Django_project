@@ -35,7 +35,7 @@
 
 
 
-# 4. 데이터베이스 모델링(dbdiagram.io)
+# 4. DB 모델링(dbdiagram.io)
 <div align="center">
   <img src="./mysite/리드미 자료/DB.png" width="60%">
 </div>
